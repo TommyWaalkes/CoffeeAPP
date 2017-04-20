@@ -1,0 +1,62 @@
+﻿@model Lab20.Models.Register
+@{
+    ViewBag.Title = "Register"; 
+}
+
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Register With GC Lab 22 Version</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <form class="form-primary" action="Success">
+        <fieldset class="form-group">
+            <div class="">
+                @Html.LabelFor(model => model.FirstName, "First Name", new { style = "display:inline;" })
+                @Html.EditorFor(model => model.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Email, "Email", new { style = "display:inline;" })
+                @Html.EditorFor(model => model.Email)
+            </div>
+
+            <input type="submit" class="btn-custom" value="Submit" />
+            <input type="reset" class="btn-custom" value="Clear" />
+        </fieldset>
+    </form>
+
+}
+
+
+    <div> 
+        <br />
+        <p>Register With GC Lab 20 Version</p>
+        <form name="Reg" onsubmit="return validateForm()" action="Success" method="post">
+            <p><em>Name:</em></p>
+            <input type="text" name="FirstName" />
+            <p><em>Email:</em></p>
+            <input type="text" name="email" />
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+<script>
+    function validateForm() {
+        var fName = document.forms["Reg"]["FirstName"].value;
+        if (fName == "") {
+            alert("Name must be filled out");
+            return false;
+        }
+
+        var email = document.forms["Reg"]["email"].value;
+
+        if (email == "") {
+            alert("Email Must filled out");
+            return false;
+        }
+    }
+</script>
+
+
